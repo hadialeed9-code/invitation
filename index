@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دعوة فرح سارة</title>
+<style>
+  :root{
+    --ivory:#fcf7f2;
+    --cream:#f7ede4;
+    --blush:#f3d6d4;
+    --rose:#c9788a;
+    --wine:#6e3345;
+    --gold:#b88a4a;
+    --gold2:#e6c98f;
+    --ink:#4a2a33;
+    --muted:#9a7b82;
+    --line:rgba(184,138,74,.28);
+    --goldgrad:linear-gradient(135deg,#d9b36c,#b88a4a 50%,#e6c98f);
+    --rosegrad:linear-gradient(135deg,#d98a9b,#b9566e 60%,#c9788a);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Amiri', 'Traditional Arabic', 'Cairo', serif;
+    color:var(--ink);
+    min-height:100vh;
+    overflow-x:hidden;
+    background:
+      radial-gradient(900px 500px at 85% -5%, rgba(243,214,212,.9), transparent 60%),
+      radial-gradient(800px 500px at -10% 30%, rgba(230,201,143,.28), transparent 60%),
+      radial-gradient(700px 500px at 100% 80%, rgba(243,214,212,.6), transparent 60%),
+      var(--ivory);
+    padding: 30px 16px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wrap{
+    position:relative;
+    z-index:2;
+    max-width:680px;
+    width:100%;
+    margin:0 auto;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 40px 24px;
+    box-shadow: 0 20px 50px rgba(110,51,69,.12);
+    text-align: center;
+  }
+
+  /* falling petals */
+  .petals{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+  .petal{
+    position:absolute;top:-30px;width:14px;height:18px;border-radius:70% 0 70% 0;
+    background:linear-gradient(135deg,#f6c7cf,#e79aab);opacity:.55;
+    animation:fall linear infinite;
+  }
+  @keyframes fall{
+    0%{transform:translate3d(0,-30px,0) rotate(0deg)}
+    100%{transform:translate3d(var(--dx),110vh,0) rotate(540deg)}
+  }
+
+  /* hero & typography */
+  .corner{position:absolute;width:130px;height:130px;opacity:.85;pointer-events:none}
+  .corner.tr{top:-4px;right:-4px}
+  .corner.tl{top:-4px;left:-4px;transform:scaleX(-1)}
+
+  .rings{width:70px;height:46px;margin:0 auto 10px;display:block}
+  .eyebrow{
+    font-size:18px;color:var(--gold);letter-spacing:1px;
+    direction:ltr; font-family: serif; font-style: italic;
+  }
+  .title-small{font-size: clamp(22px, 4vw, 28px); color:var(--wine); margin-top:8px}
+  
+  .name{
+    font-weight:700;
+    font-size: clamp(60px, 16vw, 110px);
+    line-height:1.1; margin-top:2px;
+    background:var(--rosegrad);-webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 6px 14px rgba(185,86,110,.18));
+  }
+
+  .divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:12px auto 18px;max-width:300px}
+  .divider i{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .divider svg{width:22px;height:22px;color:var(--rose)}
+
+  .invitation-text{
+    font-size: 19px;
+    line-height: 1.9;
+    color: var(--wine);
+    margin: 15px 0 25px;
+  }
+
+  /* Countdown Clock */
+  .countdown-title {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .timer-grid {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 10px auto 30px;
+    max-width: 480px;
+    direction: ltr;
+  }
+
+  .timer-box {
+    flex: 1;
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 14px 6px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(184,138,74,.12);
+  }
+
+  .timer-box .num {
+    display: block;
+    font-size: clamp(26px, 6vw, 36px);
+    font-weight: 700;
+    color: var(--wine);
+    line-height: 1;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .timer-box .lbl {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  /* Details Card */
+  .details-card {
+    background: rgba(247,237,228, 0.6);
+    border: 1px dashed var(--gold);
+    border-radius: 18px;
+    padding: 20px;
+    margin: 25px 0;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    color: var(--wine);
+    margin: 8px 0;
+  }
+
+  .detail-item svg { width: 20px; height: 20px; color: var(--gold); flex: none; }
+
+  /* Gallery Button */
+  .btn-gallery {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 380px;
+    padding: 14px 28px;
+    margin-top: 10px;
+    border-radius: 999px;
+    background: var(--goldgrad);
+    color: var(--wine);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(184,138,74,.35);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+
+  .btn-gallery:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(184,138,74,.45);
+  }
+
+  .btn-gallery svg { width: 22px; height: 22px; }
+
+  .footer-note{
+    text-align:center;
+    margin:35px 0 10px;
+    color:var(--wine);
+    font-size:32px;
+    font-weight:700;
+  }
+  .footer-note span{color:var(--rose)}
+
+  .developer-sig {
+    text-align: center;
+    margin-top: 30px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 11.5px;
+    color: var(--muted);
+    letter-spacing: .4px;
+    opacity: 0.85;
+  }
+  .developer-sig span {
+    color: var(--wine);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="petals" id="petals"></div>
+
+<main class="wrap">
+  <!-- Floral Corners -->
+  <svg class="corner tr" viewBox="0 0 150 150" fill="none">
+    <path d="M150 0 C110 10 70 30 40 70 C25 90 15 115 12 150" stroke="#b88a4a" stroke-width="1.2" opacity=".7"/>
+    <g fill="#f3d6d4" stroke="#d98a9b" stroke-width="1"><ellipse cx="105" cy="38" rx="12" ry="7" transform="rotate(-30 105 38)"/><ellipse cx="88" cy="52" rx="12" ry="7" transform="rotate(30 88 52)"/></g>
+    <g fill="#fff" stroke="#c9788a" stroke-width="1"><circle cx="125" cy="22" r="9"/><circle cx="125" cy="22" r="3.5" fill="#e6c98f" stroke="none"/></g>
+  </svg>
+  <svg class="corner tl" viewBox="0 0 150 150" fill="none">
+    <path d="M150 0 C110 10 70 30 40 70 C25 90 15 115 12 150" stroke="#b88a4a" stroke-width="1.2" opacity=".7"/>
+    <g fill="#f3d6d4" stroke="#d98a9b" stroke-width="1"><ellipse cx="105" cy="38" rx="12" ry="7" transform="rotate(-30 105 38)"/><ellipse cx="88" cy="52" rx="12" ry="7" transform="rotate(30 88 52)"/></g>
+    <g fill="#fff" stroke="#c9788a" stroke-width="1"><circle cx="125" cy="22" r="9"/><circle cx="125" cy="22" r="3.5" fill="#e6c98f" stroke="none"/></g>
+  </svg>
+
+  <svg class="rings" viewBox="0 0 74 48" fill="none" stroke="#b88a4a" stroke-width="2">
+    <circle cx="27" cy="29" r="14"/><circle cx="47" cy="29" r="14"/>
+    <path d="M37 4l5 6-5 6-5-6z" fill="#e6c98f" stroke-width="1.5"/>
+  </svg>
+
+  <div class="eyebrow">Save The Date</div>
+  <div class="title-small">دعوة لحضور فرح</div>
+  <h1 class="name">سارة</h1>
+
+  <div class="divider">
+    <i></i>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.8-9.6-9.6C1.1 8.3 3.5 5 6.800 5c2 0 3.600 1 5.200 3.100C13.600 6 15.200 5 17.200 5c3.300 0 5.700 3.300 4.400 6.400C19.500 16.200 12 21 12 21z"/></svg>
+    <i></i>
+  </div>
+
+  <p class="invitation-text">
+    تكتمل سعادتنا بحضوركم ومشاركتنا أجمل لحظات العمر<br>
+    في ليلة يملؤها الحب والفرح والمودة
+  </p>
+
+  <!-- تفاصيل الموعد والمكان المحدثة -->
+  <div class="details-card">
+    <div class="detail-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span><strong>التاريخ:</strong> السبت، ٣١ أكتوبر ٢٠٢٦</span>
+    </div>
+    <div class="detail-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span><strong>التوقيت:</strong> الساعة الثامنة مساءً</span>
+    </div>
+  </div>
+
+  <!-- العد التنازلي التفاعلي -->
+  <div class="countdown-title">الوقت المتبقي لليلة العمر:</div>
+  <div class="timer-grid">
+    <div class="timer-box">
+      <span class="num" id="days">٠٠</span>
+      <span class="lbl">أيام</span>
+    </div>
+    <div class="timer-box">
+      <span class="num" id="hours">٠٠</span>
+      <span class="lbl">ساعات</span>
+    </div>
+    <div class="timer-box">
+      <span class="num" id="minutes">٠٠</span>
+      <span class="lbl">دقائق</span>
+    </div>
+    <div class="timer-box">
+      <span class="num" id="seconds">٠٠</span>
+      <span class="lbl">ثواني</span>
+    </div>
+  </div>
+
+  <!-- زر فتح معرض الصور والمستندات المباشر -->
+  <a href="https://script.google.com/macros/s/AKfycbxzMx1qf6-JgJqDawZli8C6DbRsov347RuqsZvAe_4UC7jW6MPgMXfSzqWGmuLRxE0DZA/exec" class="btn-gallery" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    استعرض معرض الصور واللحظات
+  </a>
+
+  <p class="footer-note">بالرفاء والبنين، ألف مبروك <span>♥</span></p>
+
+  <div class="developer-sig">
+    تصميم وبرمجة: <span>هادي العيد</span> | هاتف: 78846017
+  </div>
+</main>
+
+<script>
+  // ---- بتلات متساقطة ----
+  const petals = document.getElementById('petals');
+  for(let i=0;i<14;i++){
+    const p=document.createElement('i'); p.className='petal';
+    p.style.left=(Math.random()*100)+'%';
+    p.style.setProperty('--dx',(Math.random()*160-80)+'px');
+    p.style.animationDuration=(12+Math.random()*14)+'s';
+    p.style.animationDelay=(-Math.random()*20)+'s';
+    p.style.transform='scale('+(0.6+Math.random()*0.9)+')';
+    petals.appendChild(p);
+  }
+
+  // ---- تحويل الأرقام إلى العربية ----
+  const toAr = n => String(Math.max(0, n)).padStart(2,'0').replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+
+  // ---- تاريخ الفرح المحدث: السبت 31 أكتوبر 2026 الساعة 20:00 ----
+  const targetDate = new Date('2026-10-31T20:00:00').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      document.getElementById('days').textContent = '٠٠';
+      document.getElementById('hours').textContent = '٠٠';
+      document.getElementById('minutes').textContent = '٠٠';
+      document.getElementById('seconds').textContent = '٠٠';
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = toAr(d);
+    document.getElementById('hours').textContent = toAr(h);
+    document.getElementById('minutes').textContent = toAr(m);
+    document.getElementById('seconds').textContent = toAr(s);
+  }
+
+  // تشغيل العد التنازلي فوراً وتحديثه كل ثانية
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
